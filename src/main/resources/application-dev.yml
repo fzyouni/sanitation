@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://127.0.0.1:3306/iov?useSSL=false
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+  kafka:
+    bootstrap-servers: 60.168.221.166:9092
+    consumer:
+      group-id: group_id_street_sweeper_dev
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+mybatis-plus:
+  # 搜索指定包别名
+  typeAliasesPackage: com.iben.sanitation.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mappers/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
