@@ -3,6 +3,7 @@ package com.iben.sanitation.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.iben.sanitation.domain.IovFencePo;
 import com.iben.sanitation.services.impl.FenceService;
+import com.iben.sanitation.vo.IovFenceVO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +31,8 @@ public class FenceController {
 
 
   @PostMapping
-  public void addFence() {
-
+  public void addFence(IovFenceVO iovFenceVO) {
+      fenceService.addFence(iovFenceVO);
   }
 
 

@@ -3,6 +3,7 @@ package com.iben.sanitation.services;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.iben.sanitation.domain.IovFencePo;
+import com.iben.sanitation.vo.IovFenceVO;
 
 /**
  * @author fangzhuo
@@ -12,4 +13,6 @@ import com.iben.sanitation.domain.IovFencePo;
 public interface IFenceService extends IService<IovFencePo> {
 
   IPage<IovFencePo> getIovFenceList(Integer currentPage, Integer pageSize);
+
+  void addFence(IovFenceVO iovFenceVO);
 }

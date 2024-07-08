@@ -3,11 +3,12 @@ package com.iben.sanitation.services.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iben.sanitation.domain.IovFencePo;
 import com.iben.sanitation.mapper.IovFenceMapper;
+import com.iben.sanitation.mapper.IovFencePointMapper;
 import com.iben.sanitation.services.IFenceService;
+import com.iben.sanitation.vo.IovFenceVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +23,9 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePo> implem
 
   @Resource
   IovFenceMapper iovFenceMapper;
+  @Resource
+  IovFencePointMapper iovFencePointMapper;
+
 
   @Override
   public IPage<IovFencePo> getIovFenceList(Integer currentPage, Integer pageSize) {
@@ -29,4 +33,8 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePo> implem
     return baseMapper.selectPage(page, new QueryWrapper<>());
   }
 
+  @Override
+  public void addFence(IovFenceVO iovFenceVO) {
+
+  }
 }
