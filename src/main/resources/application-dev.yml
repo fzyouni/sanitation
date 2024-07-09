@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: root
-    url: jdbc:mysql://127.0.0.1:3306/iov?useSSL=false
-    password: 12345678
+    url: jdbc:mysql://60.174.234.104:3306/iov_backend?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+    username: iov_backend
+    password: iov_backend_20240709
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
   kafka:
