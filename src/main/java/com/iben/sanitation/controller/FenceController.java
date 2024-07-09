@@ -4,6 +4,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.iben.sanitation.domain.IovFencePo;
 import com.iben.sanitation.services.impl.FenceService;
 import com.iben.sanitation.vo.IovFenceVO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +29,7 @@ import javax.validation.constraints.NotNull;
  */
 @RestController
 @RequestMapping("fence")
+@Tag(name = "围栏相关接口")
 public class FenceController {
 
   @Resource
@@ -32,10 +38,14 @@ public class FenceController {
 
   @PostMapping
   public void addFence(IovFenceVO iovFenceVO) {
-      fenceService.addFence(iovFenceVO);
+    fenceService.addFence(iovFenceVO);
   }
 
-
+  @Operation(summary = "获取围栏信息列表")
+  @Parameters({
+      @Parameter(name = "currentPage", description = "页码", in = ParameterIn.PATH),
+      @Parameter(name = "pageSize", description = "页容量", required = true, in = ParameterIn.PATH)
+  })
   @GetMapping
   public IPage<IovFencePo> listFence(
       @Min(value = 1, message = "最小页数为1") @NotNull(message = "当前页不可为空") Integer currentPage,
