@@ -9,6 +9,13 @@ server:
   servlet:
     context-path: /sanitation
 
+sanitation-info:
+  group-ids:
+    street-sweeper: GROUP-ID-STREET-SWEEPER-DEV
+  kafka-topics:
+    street-sweeper: STREET-SWEEPER-DATA-PROD
+
+
 
 #mybatis-plus
 mybatis-plus:
