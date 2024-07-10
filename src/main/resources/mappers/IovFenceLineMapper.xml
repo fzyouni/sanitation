@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovFenceLineMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFenceLinePo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFenceLinePO">
     <id column="line_id" jdbcType="BIGINT" property="lineId" />
     <result column="fence_id" jdbcType="BIGINT" property="fenceId" />
     <result column="line_name" jdbcType="VARCHAR" property="lineName" />
@@ -29,7 +29,7 @@
     delete from iov_fence_line
     where line_id = #{lineId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFenceLinePo">
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFenceLinePO">
     insert into iov_fence_line (line_id, fence_id, line_name,
       road_label_id, clean_level, start_point_name,
       end_point_name, community_code, line_options,
@@ -47,7 +47,7 @@
       #{locationInfo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
       #{deleteStatus,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFenceLinePo">
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFenceLinePO">
     update iov_fence_line
     set fence_id = #{fenceId,jdbcType=BIGINT},
       line_name = #{lineName,jdbcType=VARCHAR},

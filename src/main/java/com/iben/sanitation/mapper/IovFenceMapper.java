@@ -1,14 +1,14 @@
 package com.iben.sanitation.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.iben.sanitation.domain.IovFencePo;
+import com.iben.sanitation.domain.IovFencePO;
 
 import java.util.List;
 
-public interface IovFenceMapper extends BaseMapper<IovFencePo> {
+public interface IovFenceMapper extends BaseMapper<IovFencePO> {
     int deleteByPrimaryKey(Long fenceId);
-    List<IovFencePo> selectAll();
-    int updateByPrimaryKey(IovFencePo row);
+    List<IovFencePO> selectAll();
+    int updateByPrimaryKey(IovFencePO row);
 
 
 

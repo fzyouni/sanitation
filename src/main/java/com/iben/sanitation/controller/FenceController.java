@@ -1,7 +1,9 @@
 package com.iben.sanitation.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.iben.sanitation.domain.IovFencePo;
+import com.iben.sanitation.domain.IovFencePO;
+import com.iben.sanitation.dto.IovFenceAddDTO;
+import com.iben.sanitation.msg.ResponseModel;
 import com.iben.sanitation.services.impl.FenceService;
 import com.iben.sanitation.vo.IovFenceVO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,10 +32,12 @@ public class FenceController {
     @Resource
     FenceService fenceService;
 
-
+    @Operation(summary = "添加围栏")
     @PostMapping
-    public void addFence(IovFenceVO iovFenceVO) {
-        fenceService.addFence(iovFenceVO);
+    public ResponseModel<IovFenceVO> addFence(@RequestBody IovFenceAddDTO fenceAddDto) throws Exception {
+        IovFenceVO fenceVO = fenceService.addFence(fenceAddDto);
+
+        return ResponseModel.success(fenceVO);
     }
 
     @Operation(summary = "获取围栏信息列表")
@@ -42,7 +46,7 @@ public class FenceController {
             @Parameter(name = "pageSize", description = "页容量", required = true, in = ParameterIn.PATH)
     })
     @GetMapping
-    public IPage<IovFencePo> listFence(
+    public IPage<IovFencePO> listFence(
             @Min(value = 1, message = "最小页数为1") @NotNull(message = "当前页不可为空") Integer currentPage,
             @NotNull(message = "页容量不可为空！") @Min(value = 1, message = "最小页容量需大于或等于1！") Integer pageSize) {
         return fenceService.getIovFenceList(currentPage, pageSize);

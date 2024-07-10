@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.iben.sanitation.domain.base.extend.BaseModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.math.BigDecimal;
-
 /**
  * road
  * 道路标签表(iov_road_label)表实体类
@@ -15,7 +13,7 @@ import java.math.BigDecimal;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_road_label")
-public class IovRoadLabelPo extends BaseModel {
+public class IovRoadLabelPO extends BaseModel {
 
     @TableId
     @Schema(description = "围栏线路归属的道路标签ID")
@@ -67,13 +65,13 @@ public class IovRoadLabelPo extends BaseModel {
     private Integer dedustDirection;
 
     @Schema(description = "线路长度 单位米double 0.00")
-    private BigDecimal roadLength;
+    private Double roadLength;
 
     @Schema(description = "线路宽度 单位米double 0.00")
-    private BigDecimal roadWidth;
+    private Double roadWidth;
 
     @Schema(description = "线路面积 单位立方米double 0.00")
-    private BigDecimal roadArea;
+    private Double roadArea;
 
 
     private static final long serialVersionUID = 1L;
@@ -206,27 +204,27 @@ public class IovRoadLabelPo extends BaseModel {
         this.dedustDirection = dedustDirection;
     }
 
-    public BigDecimal getRoadLength() {
+    public Double getRoadLength() {
         return roadLength;
     }
 
-    public void setRoadLength(BigDecimal roadLength) {
+    public void setRoadLength(Double roadLength) {
         this.roadLength = roadLength;
     }
 
-    public BigDecimal getRoadWidth() {
+    public Double getRoadWidth() {
         return roadWidth;
     }
 
-    public void setRoadWidth(BigDecimal roadWidth) {
+    public void setRoadWidth(Double roadWidth) {
         this.roadWidth = roadWidth;
     }
 
-    public BigDecimal getRoadArea() {
+    public Double getRoadArea() {
         return roadArea;
     }
 
-    public void setRoadArea(BigDecimal roadArea) {
+    public void setRoadArea(Double roadArea) {
         this.roadArea = roadArea;
     }
 

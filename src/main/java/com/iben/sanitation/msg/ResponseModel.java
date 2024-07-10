@@ -1,6 +1,7 @@
 package com.iben.sanitation.msg;
 
 import com.iben.sanitation.enums.ReturnCodeType;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
@@ -19,18 +20,22 @@ public class ResponseModel<T> implements Serializable {
     /**
      * 返回正常异常状态
      */
+    @Schema(description = "返回正常异常状态")
     private String status;
     /**
      * 返回状态编码
      */
+    @Schema(description = "返回状态编码 200 success ，404 error")
     private final String code;
     /**
      * 返回信息
      */
+    @Schema(description = "返回信息")
     private final String message;
     /**
      * 返回数据
      */
+    @Schema(description = "返回数据")
     private T data;
 
     /**

@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovFencePointMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePointPo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePointPO">
     <id column="fence_point_id" jdbcType="BIGINT" property="fencePointId" />
     <result column="fence_id" jdbcType="BIGINT" property="fenceId" />
     <result column="customer_id" jdbcType="BIGINT" property="customerId" />
     <result column="lng" jdbcType="DECIMAL" property="lng" />
     <result column="lat" jdbcType="DECIMAL" property="lat" />
+    <result column="coordinate_type" jdbcType="INTEGER" property="coordinateType" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
     <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
   </resultMap>
+
+
+  <insert id="batchInsertPoints">
+    INSERT INTO iov_fence_point
+    (fence_id, customer_id, lat, lng, coordinate_type, sort, create_time, modify_time, delete_status) VALUES
+    <foreach collection="points" item="item" index="index" separator=",">
+      (#{fenceId}, #{customerId}, #{item.lat}, #{item.lng}, #{index}, #{coordinateType}, NOW(), NOW(), 0)
+    </foreach>
+  </insert>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from iov_fence_point
     where fence_point_id = #{fencePointId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFencePointPo">
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFencePointPO">
     insert into iov_fence_point (fence_point_id, fence_id, customer_id,
-      lng, lat, sort, create_time,
+      lng, lat,coordinate_type, sort, create_time,
       modify_time, delete_status)
     values (#{fencePointId,jdbcType=BIGINT}, #{fenceId,jdbcType=BIGINT}, #{customerId,jdbcType=BIGINT},
-      #{lng,jdbcType=DECIMAL}, #{lat,jdbcType=DECIMAL}, #{sort,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{lng,jdbcType=DECIMAL}, #{lat,jdbcType=DECIMAL}, #{coordinateType,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
       #{modifyTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFencePointPo">
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFencePointPO">
     update iov_fence_point
     set fence_id = #{fenceId,jdbcType=BIGINT},
       customer_id = #{customerId,jdbcType=BIGINT},
@@ -47,4 +60,7 @@
     delete_status
     from iov_fence_point
   </select>
+
+
+
 </mapper>

@@ -17,6 +17,8 @@ spring:
 
 # springdoc-openapi项目配置
 springdoc:
+  ## runner 是否打印文档访问地址
+  enable-print-url: true
   swagger-ui:
     path: /swagger-ui.html
     tags-sorter: alpha

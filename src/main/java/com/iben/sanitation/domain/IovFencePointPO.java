@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.iben.sanitation.domain.base.extend.CustomerBaseModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.math.BigDecimal;
-
 /**
  * 围栏点位表(iov_fence_point)表实体类
  *
@@ -14,7 +12,7 @@ import java.math.BigDecimal;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_fence_point")
-public class IovFencePointPo extends CustomerBaseModel {
+public class IovFencePointPO extends CustomerBaseModel {
 
     @TableId
     @Schema(description = "围栏点位ID")
@@ -24,10 +22,13 @@ public class IovFencePointPo extends CustomerBaseModel {
     private Long fenceId;
 
     @Schema(description = "经度（小数点后6位）")
-    private BigDecimal lng;
+    private Double lng;
 
     @Schema(description = "纬度（小数点后6位）")
-    private BigDecimal lat;
+    private Double lat;
+
+    @Schema(description = "经纬度坐标系类型 （1 WGS84 - 原始坐标系, 2 GCJ02 国测局标准/火星坐标系/高德地图使用,3 BD09 百度坐标系/百度地图使用,4 CGCS2000 国家大地坐标系；基础数据-字典表 请求参数 parent = CoordinateType，用户选择后，存入dictCode字段的值）（包含相关的iov_fence_point 围栏点位表的坐标类型）")
+    private Integer coordinateType;
 
     @Schema(description = "顺序")
     private Integer sort;
@@ -50,21 +51,30 @@ public class IovFencePointPo extends CustomerBaseModel {
         this.fenceId = fenceId;
     }
 
-    public BigDecimal getLng() {
+    public Double getLng() {
         return lng;
     }
 
-    public void setLng(BigDecimal lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 
-    public BigDecimal getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(BigDecimal lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
+
+    public Integer getCoordinateType() {
+        return coordinateType;
+    }
+
+    public void setCoordinateType(Integer coordinateType) {
+        this.coordinateType = coordinateType;
+    }
+
 
     public Integer getSort() {
         return sort;
@@ -85,6 +95,7 @@ public class IovFencePointPo extends CustomerBaseModel {
         sb.append(", fenceId=").append(fenceId);
         sb.append(", lng=").append(lng);
         sb.append(", lat=").append(lat);
+        sb.append(", coordinateType=").append(coordinateType);
         sb.append(", sort=").append(sort);
         sb.append(", customerId=").append(getCustomerId());
         sb.append(", createTime=").append(getCreateTime());

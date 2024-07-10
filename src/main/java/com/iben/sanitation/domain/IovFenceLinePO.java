@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.iben.sanitation.domain.base.extend.BaseModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.math.BigDecimal;
-
 /**
  * line
  * 围栏线路业务表(iov_fence_line)表实体类
@@ -15,7 +13,7 @@ import java.math.BigDecimal;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_fence_line")
-public class IovFenceLinePo extends BaseModel {
+public class IovFenceLinePO extends BaseModel {
 
     @TableId
     @Schema(description = "围栏线路业务ID")
@@ -64,13 +62,13 @@ public class IovFenceLinePo extends BaseModel {
     private Integer dedustDirection;
 
     @Schema(description = "线路长度 单位米double 0.00")
-    private BigDecimal lineLength;
+    private Double lineLength;
 
     @Schema(description = "线路宽度 单位米double 0.00")
-    private BigDecimal lineWidth;
+    private Double lineWidth;
 
     @Schema(description = "线路面积 单位立方米double 0.00")
-    private BigDecimal lineArea;
+    private Double lineArea;
 
     @Schema(description = "位置信息")
     private String locationInfo;
@@ -198,27 +196,27 @@ public class IovFenceLinePo extends BaseModel {
         this.dedustDirection = dedustDirection;
     }
 
-    public BigDecimal getLineLength() {
+    public Double getLineLength() {
         return lineLength;
     }
 
-    public void setLineLength(BigDecimal lineLength) {
+    public void setLineLength(Double lineLength) {
         this.lineLength = lineLength;
     }
 
-    public BigDecimal getLineWidth() {
+    public Double getLineWidth() {
         return lineWidth;
     }
 
-    public void setLineWidth(BigDecimal lineWidth) {
+    public void setLineWidth(Double lineWidth) {
         this.lineWidth = lineWidth;
     }
 
-    public BigDecimal getLineArea() {
+    public Double getLineArea() {
         return lineArea;
     }
 
-    public void setLineArea(BigDecimal lineArea) {
+    public void setLineArea(Double lineArea) {
         this.lineArea = lineArea;
     }
 

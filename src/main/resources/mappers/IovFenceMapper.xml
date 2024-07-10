@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovFenceMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePO">
     <id column="fence_id" jdbcType="BIGINT" property="fenceId" />
     <result column="fence_name" jdbcType="VARCHAR" property="fenceName" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" />
@@ -18,7 +18,7 @@
     delete from iov_fence
     where fence_id = #{fenceId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFencePo">
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFencePO">
     insert into iov_fence (fence_id, fence_name, customer_id,
       fence_type, length, radius,
       area, coordinate_type, create_time,
@@ -28,7 +28,7 @@
       #{area,jdbcType=DECIMAL}, #{coordinateType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
       #{modifyTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFencePo">
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFencePO">
     update iov_fence
     set fence_name = #{fenceName,jdbcType=VARCHAR},
       customer_id = #{customerId,jdbcType=INTEGER},

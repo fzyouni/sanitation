@@ -1,15 +1,15 @@
 package com.iben.sanitation.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.iben.sanitation.domain.IovRoadLabelPo;
+import com.iben.sanitation.domain.IovRoadLabelPO;
 
 import java.util.List;
 
-public interface IovRoadLabelMapper extends BaseMapper<IovRoadLabelPo> {
+public interface IovRoadLabelMapper extends BaseMapper<IovRoadLabelPO> {
     int deleteByPrimaryKey(Long roadLabelId);
-    IovRoadLabelPo selectByPrimaryKey(Long roadLabelId);
-    List<IovRoadLabelPo> selectAll();
-    int updateByPrimaryKey(IovRoadLabelPo row);
+    IovRoadLabelPO selectByPrimaryKey(Long roadLabelId);
+    List<IovRoadLabelPO> selectAll();
+    int updateByPrimaryKey(IovRoadLabelPO row);
 
 
 

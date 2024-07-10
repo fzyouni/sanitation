@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovFenceOpMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePO">
   </resultMap>
 
 

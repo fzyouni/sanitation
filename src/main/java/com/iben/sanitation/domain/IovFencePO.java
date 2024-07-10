@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.iben.sanitation.domain.base.extend.CustomerBaseModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.math.BigDecimal;
+
 
 /**
  * fence
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_fence")
-public class IovFencePo extends CustomerBaseModel {
+public class IovFencePO extends CustomerBaseModel {
 
     @TableId
     @Schema(description = "围栏 id")
@@ -28,13 +28,13 @@ public class IovFencePo extends CustomerBaseModel {
     private Integer fenceType;
 
     @Schema(description = "线路实际长度（仅限线路，默认值0）")
-    private BigDecimal length;
+    private Double length;
 
     @Schema(description = "半径（仅限标注/圆形，默认值0）")
-    private BigDecimal radius;
+    private Double radius;
 
     @Schema(description = "区域面积(仅限多边形/矩形/圆形，默认值0)")
-    private BigDecimal area;
+    private Double area;
 
     @Schema(description = "经纬度坐标系类型 （1 WGS84 - 原始坐标系, 2 GCJ02 国测局标准/火星坐标系/高德地图使用,3 BD09 百度坐标系/百度地图使用,4 CGCS2000 国家大地坐标系；基础数据-字典表 请求参数 parent = CoordinateType，用户选择后，存入dictCode字段的值）（包含相关的iov_fence_point 围栏点位表的坐标类型）")
     private Integer coordinateType;
@@ -65,27 +65,27 @@ public class IovFencePo extends CustomerBaseModel {
         this.fenceType = fenceType;
     }
 
-    public BigDecimal getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public void setLength(BigDecimal length) {
+    public void setLength(Double length) {
         this.length = length;
     }
 
-    public BigDecimal getRadius() {
+    public Double getRadius() {
         return radius;
     }
 
-    public void setRadius(BigDecimal radius) {
+    public void setRadius(Double radius) {
         this.radius = radius;
     }
 
-    public BigDecimal getArea() {
+    public Double getArea() {
         return area;
     }
 
-    public void setArea(BigDecimal area) {
+    public void setArea(Double area) {
         this.area = area;
     }
 

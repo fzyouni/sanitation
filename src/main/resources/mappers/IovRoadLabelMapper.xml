@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovRoadLabelMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovRoadLabelPo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovRoadLabelPO">
     <id column="road_label_id" jdbcType="BIGINT" property="roadLabelId" />
     <result column="road_label_name" jdbcType="VARCHAR" property="roadLabelName" />
     <result column="label_deep" jdbcType="INTEGER" property="labelDeep" />
@@ -29,7 +29,7 @@
     delete from iov_road_label
     where road_label_id = #{roadLabelId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovRoadLabelPo">
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovRoadLabelPO">
     insert into iov_road_label (road_label_id, road_label_name, label_deep,
       label_sort, start_point_name, end_point_name,
       remark, community_code, clean_level,
@@ -47,7 +47,7 @@
       #{roadArea,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
       #{deleteStatus,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovRoadLabelPo">
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovRoadLabelPO">
     update iov_road_label
     set road_label_name = #{roadLabelName,jdbcType=VARCHAR},
       label_deep = #{labelDeep,jdbcType=INTEGER},
