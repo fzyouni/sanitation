@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iben.sanitation.domain.IovFencePo;
+import com.iben.sanitation.mapper.IovFenceMapper;
+import com.iben.sanitation.mapper.IovFencePointMapper;
 import com.iben.sanitation.services.IFenceService;
 import com.iben.sanitation.vo.IovFenceVO;
 import org.springframework.stereotype.Service;

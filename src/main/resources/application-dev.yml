@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
   kafka:
-    bootstrap-servers: 60.168.221.166:9092
+    bootstrap-servers: 60.188.247.238:10011,60.188.247.238:10012,60.188.247.238:10013
     consumer:
       group-id: group_id_street_sweeper_dev
       auto-offset-reset: earliest
