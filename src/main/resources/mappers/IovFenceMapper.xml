@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.iben.platform.mapper.ISysDictNodeMapper">
-
-
-
-
+<mapper namespace="com.iben.sanitation.mapper.IovFenceMapper">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePo">
+    <id column="fence_id" jdbcType="BIGINT" property="fenceId" />
+    <result column="fence_name" jdbcType="VARCHAR" property="fenceName" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="fence_type" jdbcType="INTEGER" property="fenceType" />
+    <result column="length" jdbcType="DECIMAL" property="length" />
+    <result column="radius" jdbcType="DECIMAL" property="radius" />
+    <result column="area" jdbcType="DECIMAL" property="area" />
+    <result column="coordinate_type" jdbcType="INTEGER" property="coordinateType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from iov_fence
+    where fence_id = #{fenceId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFencePo">
+    insert into iov_fence (fence_id, fence_name, customer_id,
+      fence_type, length, radius,
+      area, coordinate_type, create_time,
+      modify_time, delete_status)
+    values (#{fenceId,jdbcType=BIGINT}, #{fenceName,jdbcType=VARCHAR}, #{customerId,jdbcType=INTEGER},
+      #{fenceType,jdbcType=INTEGER}, #{length,jdbcType=DECIMAL}, #{radius,jdbcType=DECIMAL},
+      #{area,jdbcType=DECIMAL}, #{coordinateType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{modifyTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFencePo">
+    update iov_fence
+    set fence_name = #{fenceName,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      fence_type = #{fenceType,jdbcType=INTEGER},
+      length = #{length,jdbcType=DECIMAL},
+      radius = #{radius,jdbcType=DECIMAL},
+      area = #{area,jdbcType=DECIMAL},
+      coordinate_type = #{coordinateType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      delete_status = #{deleteStatus,jdbcType=BIT}
+    where fence_id = #{fenceId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select fence_id, fence_name, customer_id, fence_type, length, radius, area, coordinate_type,
+    create_time, modify_time, delete_status
+    from iov_fence
+    where fence_id = #{fenceId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fence_id, fence_name, customer_id, fence_type, length, radius, area, coordinate_type,
+    create_time, modify_time, delete_status
+    from iov_fence
+  </select>
 </mapper>

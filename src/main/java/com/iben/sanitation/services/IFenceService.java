@@ -12,7 +12,7 @@ import com.iben.sanitation.vo.IovFenceVO;
  */
 public interface IFenceService extends IService<IovFencePo> {
 
-  IPage<IovFencePo> getIovFenceList(Integer currentPage, Integer pageSize);
+    IPage<IovFencePo> getIovFenceList(Integer currentPage, Integer pageSize);
 
-  void addFence(IovFenceVO iovFenceVO);
+    void addFence(IovFenceVO iovFenceVO);
 }

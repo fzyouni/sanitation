@@ -9,12 +9,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.Min;
@@ -32,35 +27,35 @@ import javax.validation.constraints.NotNull;
 @Tag(name = "围栏相关接口")
 public class FenceController {
 
-  @Resource
-  FenceService fenceService;
+    @Resource
+    FenceService fenceService;
 
 
-  @PostMapping
-  public void addFence(IovFenceVO iovFenceVO) {
-    fenceService.addFence(iovFenceVO);
-  }
+    @PostMapping
+    public void addFence(IovFenceVO iovFenceVO) {
+        fenceService.addFence(iovFenceVO);
+    }
 
-  @Operation(summary = "获取围栏信息列表")
-  @Parameters({
-      @Parameter(name = "currentPage", description = "页码", in = ParameterIn.PATH),
-      @Parameter(name = "pageSize", description = "页容量", required = true, in = ParameterIn.PATH)
-  })
-  @GetMapping
-  public IPage<IovFencePo> listFence(
-      @Min(value = 1, message = "最小页数为1") @NotNull(message = "当前页不可为空") Integer currentPage,
-      @NotNull(message = "页容量不可为空！") @Min(value = 1, message = "最小页容量需大于或等于1！") Integer pageSize) {
-    return fenceService.getIovFenceList(currentPage, pageSize);
-  }
+    @Operation(summary = "获取围栏信息列表")
+    @Parameters({
+            @Parameter(name = "currentPage", description = "页码", in = ParameterIn.PATH),
+            @Parameter(name = "pageSize", description = "页容量", required = true, in = ParameterIn.PATH)
+    })
+    @GetMapping
+    public IPage<IovFencePo> listFence(
+            @Min(value = 1, message = "最小页数为1") @NotNull(message = "当前页不可为空") Integer currentPage,
+            @NotNull(message = "页容量不可为空！") @Min(value = 1, message = "最小页容量需大于或等于1！") Integer pageSize) {
+        return fenceService.getIovFenceList(currentPage, pageSize);
+    }
 
-  @GetMapping("{fenceId}")
-  public void detailFence(@PathVariable Integer fenceId) {
+    @GetMapping("{fenceId}")
+    public void detailFence(@PathVariable Integer fenceId) {
 
-  }
+    }
 
-  @DeleteMapping("{fenceId}")
-  public void deleteFence(@PathVariable Integer fenceId) {
+    @DeleteMapping("{fenceId}")
+    public void deleteFence(@PathVariable Integer fenceId) {
 
-  }
+    }
 
 }

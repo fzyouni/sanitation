@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class SanitationApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SanitationApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SanitationApplication.class, args);
+    }
 
 }

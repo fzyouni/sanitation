@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iben.sanitation.domain.IovFencePo;
-import com.iben.sanitation.mapper.IovFenceMapper;
-import com.iben.sanitation.mapper.IovFencePointMapper;
 import com.iben.sanitation.services.IFenceService;
 import com.iben.sanitation.vo.IovFenceVO;
 import org.springframework.stereotype.Service;
@@ -21,20 +19,20 @@ import javax.annotation.Resource;
 @Service
 public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePo> implements IFenceService {
 
-  @Resource
-  IovFenceMapper iovFenceMapper;
-  @Resource
-  IovFencePointMapper iovFencePointMapper;
+    @Resource
+    IovFenceMapper iovFenceMapper;
+    @Resource
+    IovFencePointMapper iovFencePointMapper;
 
 
-  @Override
-  public IPage<IovFencePo> getIovFenceList(Integer currentPage, Integer pageSize) {
-    IPage<IovFencePo> page = new Page<>(currentPage, pageSize);
-    return baseMapper.selectPage(page, new QueryWrapper<>());
-  }
+    @Override
+    public IPage<IovFencePo> getIovFenceList(Integer currentPage, Integer pageSize) {
+        IPage<IovFencePo> page = new Page<>(currentPage, pageSize);
+        return baseMapper.selectPage(page, new QueryWrapper<>());
+    }
 
-  @Override
-  public void addFence(IovFenceVO iovFenceVO) {
+    @Override
+    public void addFence(IovFenceVO iovFenceVO) {
 
-  }
+    }
 }

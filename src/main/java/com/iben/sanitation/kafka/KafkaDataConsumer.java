@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaDataConsumer {
 
-  @KafkaListener(topics = "test", groupId = "group_id_street_sweeper_dev")
-  public void consume(String message) {
-    System.out.println(message);
-  }
+    @KafkaListener(topics = "test", groupId = "group_id_street_sweeper_dev")
+    public void consume(String message) {
+        System.out.println(message);
+    }
 
 }

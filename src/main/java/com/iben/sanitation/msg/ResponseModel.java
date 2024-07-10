@@ -2,7 +2,6 @@ package com.iben.sanitation.msg;
 
 import com.iben.sanitation.enums.ReturnCodeType;
 
-
 import java.io.Serializable;
 
 /**

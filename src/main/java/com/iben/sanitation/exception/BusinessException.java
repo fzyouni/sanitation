@@ -28,7 +28,7 @@ public class BusinessException extends Exception {
     /**
      * @param returnCodeType 异常类型枚举
      * @param message        自定义异常消息，用于覆盖默认异常消息
-     */ 
+     */
     public BusinessException(ReturnCodeType returnCodeType, String message) {
         super(message);
         this.returnCodeType = returnCodeType;

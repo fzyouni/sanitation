@@ -14,10 +14,10 @@ import java.math.BigDecimal;
 @Data
 public class IovFencePointVO {
 
-  private Integer fencePointId;
-  private Integer orgId;
-  private BigDecimal lat;
-  private BigDecimal lng;
-  private Integer sort;
+    private Integer fencePointId;
+    private Integer orgId;
+    private BigDecimal lat;
+    private BigDecimal lng;
+    private Integer sort;
 
 }

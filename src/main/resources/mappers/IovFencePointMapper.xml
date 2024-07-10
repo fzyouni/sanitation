@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iben.sanitation.mapper.IovFencePointMapper">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFencePointPo">
+    <id column="fence_point_id" jdbcType="BIGINT" property="fencePointId" />
+    <result column="fence_id" jdbcType="BIGINT" property="fenceId" />
+    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="lng" jdbcType="DECIMAL" property="lng" />
+    <result column="lat" jdbcType="DECIMAL" property="lat" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from iov_fence_point
+    where fence_point_id = #{fencePointId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFencePointPo">
+    insert into iov_fence_point (fence_point_id, fence_id, customer_id,
+      lng, lat, sort, create_time,
+      modify_time, delete_status)
+    values (#{fencePointId,jdbcType=BIGINT}, #{fenceId,jdbcType=BIGINT}, #{customerId,jdbcType=BIGINT},
+      #{lng,jdbcType=DECIMAL}, #{lat,jdbcType=DECIMAL}, #{sort,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{modifyTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFencePointPo">
+    update iov_fence_point
+    set fence_id = #{fenceId,jdbcType=BIGINT},
+      customer_id = #{customerId,jdbcType=BIGINT},
+      lng = #{lng,jdbcType=DECIMAL},
+      lat = #{lat,jdbcType=DECIMAL},
+      sort = #{sort,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      delete_status = #{deleteStatus,jdbcType=BIT}
+    where fence_point_id = #{fencePointId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select fence_point_id, fence_id, customer_id, lng, lat, sort, create_time, modify_time,
+    delete_status
+    from iov_fence_point
+    where fence_point_id = #{fencePointId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fence_point_id, fence_id, customer_id, lng, lat, sort, create_time, modify_time,
+    delete_status
+    from iov_fence_point
+  </select>
+</mapper>

@@ -8,3 +8,30 @@ server:
   port: 8080
   servlet:
     context-path: /sanitation
+
+
+#mybatis-plus
+mybatis-plus:
+  # 搜索指定包别名
+  typeAliasesPackage: com.iben.sanitation.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mappers/*Mapper.xml
+  configuration:
+    #开启实体驼峰命名
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    #主键类型
+    db-config:
+      id-type: AUTO
+      #逻辑删除配置（下面2个配置）
+      logic-delete-value: true
+      logic-not-delete-value: false
+      field-strategy: NOT_NULL
+      db-type: MYSQL
+      logic-delete-field: delete_status
+
+
+
+
