@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_data_dictionary")
-public class IovDataDictionaryPo extends BaseModel {
+public class IovDataDictionaryPO extends BaseModel {
 
     @TableId
     @Schema(description = "字典表ID")

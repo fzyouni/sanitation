@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_administrative_division")
-public class IovAdministrativeDivisionPo extends BaseModel {
+public class IovAdministrativeDivisionPO extends BaseModel {
 
     @TableId
     @Schema(description = "行政区划id")

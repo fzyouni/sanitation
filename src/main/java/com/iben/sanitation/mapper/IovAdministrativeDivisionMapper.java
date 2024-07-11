@@ -1,15 +1,15 @@
 package com.iben.sanitation.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.iben.sanitation.domain.IovAdministrativeDivisionPo;
+import com.iben.sanitation.domain.IovAdministrativeDivisionPO;
 
 import java.util.List;
 
-public interface IovAdministrativeDivisionMapper extends BaseMapper<IovAdministrativeDivisionPo> {
+public interface IovAdministrativeDivisionMapper extends BaseMapper<IovAdministrativeDivisionPO> {
     int deleteByPrimaryKey(Integer adId);
-    IovAdministrativeDivisionPo selectByPrimaryKey(Integer adId);
-    List<IovAdministrativeDivisionPo> selectAll();
-    int updateByPrimaryKey(IovAdministrativeDivisionPo row);
+    IovAdministrativeDivisionPO selectByPrimaryKey(Integer adId);
+    List<IovAdministrativeDivisionPO> selectAll();
+    int updateByPrimaryKey(IovAdministrativeDivisionPO row);
 
 
 

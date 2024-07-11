@@ -3,6 +3,7 @@ package com.iben.sanitation.domain;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.iben.sanitation.domain.base.extend.BaseModel;
+import com.iben.sanitation.domain.base.extend.CustomerBaseModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
@@ -13,7 +14,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @since 2024-06-24 16:26:54
  */
 @TableName("iov_road_label")
-public class IovRoadLabelPO extends BaseModel {
+public class IovRoadLabelPO extends CustomerBaseModel {
 
     @TableId
     @Schema(description = "围栏线路归属的道路标签ID")

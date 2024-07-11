@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovDataDictionaryMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovDataDictionaryPo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovDataDictionaryPO">
     <id column="dict_id" jdbcType="BIGINT" property="dictId" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="dict_name" jdbcType="VARCHAR" property="dictName" />
@@ -17,7 +17,7 @@
     delete from iov_data_dictionary
     where dict_id = #{dictId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovDataDictionaryPo">
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovDataDictionaryPO">
     insert into iov_data_dictionary (dict_id, remark, dict_name,
       dict_code, int_code, parent,
       dict_sort, create_time, modify_time,
@@ -27,7 +27,7 @@
       #{dictSort,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
       #{deleteStatus,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovDataDictionaryPo">
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovDataDictionaryPO">
     update iov_data_dictionary
     set remark = #{remark,jdbcType=VARCHAR},
       dict_name = #{dictName,jdbcType=VARCHAR},

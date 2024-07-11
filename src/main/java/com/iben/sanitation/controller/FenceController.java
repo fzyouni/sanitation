@@ -1,10 +1,15 @@
 package com.iben.sanitation.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.iben.sanitation.domain.IovAdministrativeDivisionPO;
 import com.iben.sanitation.domain.IovFencePO;
+import com.iben.sanitation.domain.IovRoadLabelPO;
 import com.iben.sanitation.dto.IovFenceAddDTO;
 import com.iben.sanitation.msg.ResponseModel;
+import com.iben.sanitation.queryForm.AdDivisionQueryForm;
+import com.iben.sanitation.queryForm.RoadLabelQueryForm;
 import com.iben.sanitation.services.impl.FenceService;
+import com.iben.sanitation.services.impl.RoadLabelService;
 import com.iben.sanitation.vo.IovFenceVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 围栏接口
@@ -36,7 +42,10 @@ import javax.validation.constraints.NotNull;
 public class FenceController {
 
     @Resource
-    FenceService fenceService;
+    private FenceService fenceService;
+
+    @Resource
+    private RoadLabelService roadLabelService;
 
     @Operation(summary = "添加围栏")
     @PostMapping
@@ -66,6 +75,16 @@ public class FenceController {
     @DeleteMapping("{fenceId}")
     public void deleteFence(@PathVariable Integer fenceId) {
 
+    }
+
+
+
+    @Operation(summary = "行政区划查询")
+    @PostMapping(value = "/queryAdDivision")
+    public ResponseModel<List<IovRoadLabelPO>> queryAdDivision(@RequestBody RoadLabelQueryForm queryForm) {
+        List<IovRoadLabelPO> poList = roadLabelService.queryRoadLabelListByForm(queryForm);
+
+        return ResponseModel.success(poList);
     }
 
 }

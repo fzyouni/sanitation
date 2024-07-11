@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovAdministrativeDivisionMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovAdministrativeDivisionPo">
+  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovAdministrativeDivisionPO">
     <id column="ad_id" jdbcType="INTEGER" property="adId" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="deep" jdbcType="INTEGER" property="deep" />
@@ -19,7 +19,7 @@
     delete from iov_administrative_division
     where ad_id = #{adId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovAdministrativeDivisionPo">
+  <insert id="insert" parameterType="com.iben.sanitation.domain.IovAdministrativeDivisionPO">
     insert into iov_administrative_division (ad_id, pid, deep,
       name, local_name, pinyin_prefix,
       pinyin, ext_id, ext_name,
@@ -31,7 +31,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovAdministrativeDivisionPo">
+  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovAdministrativeDivisionPO">
     update iov_administrative_division
     set pid = #{pid,jdbcType=INTEGER},
       deep = #{deep,jdbcType=INTEGER},
