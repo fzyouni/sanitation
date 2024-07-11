@@ -3,8 +3,6 @@ package com.iben.sanitation.vo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 /**
  * 围栏点位vo
  *
