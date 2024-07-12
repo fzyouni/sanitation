@@ -6,10 +6,6 @@ import com.iben.sanitation.domain.IovFencePO;
 import java.util.List;
 
 public interface IovFenceMapper extends BaseMapper<IovFencePO> {
-    int deleteByPrimaryKey(Long fenceId);
-    List<IovFencePO> selectAll();
-    int updateByPrimaryKey(IovFencePO row);
-
 
 
 

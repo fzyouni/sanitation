@@ -6,8 +6,8 @@ package com.iben.sanitation.domain.base;
  */
 public interface ILogicDeleteBaseModel extends IBaseModel {
 
-    Boolean getDeleteStatus();
+    Short getDeleteStatus();
 
-    void setDeleteStatus(Boolean deleteStatus);
+    void setDeleteStatus(Short deleteStatus);
 
 }

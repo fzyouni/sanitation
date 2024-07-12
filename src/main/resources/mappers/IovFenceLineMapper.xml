@@ -1,90 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iben.sanitation.mapper.IovFenceLineMapper">
-  <resultMap id="BaseResultMap" type="com.iben.sanitation.domain.IovFenceLinePO">
-    <id column="line_id" jdbcType="BIGINT" property="lineId" />
-    <result column="fence_id" jdbcType="BIGINT" property="fenceId" />
-    <result column="line_name" jdbcType="VARCHAR" property="lineName" />
-    <result column="road_label_id" jdbcType="BIGINT" property="roadLabelId" />
-    <result column="clean_level" jdbcType="INTEGER" property="cleanLevel" />
-    <result column="start_point_name" jdbcType="VARCHAR" property="startPointName" />
-    <result column="end_point_name" jdbcType="VARCHAR" property="endPointName" />
-    <result column="community_code" jdbcType="BIGINT" property="communityCode" />
-    <result column="line_options" jdbcType="INTEGER" property="lineOptions" />
-    <result column="purling_count" jdbcType="INTEGER" property="purlingCount" />
-    <result column="sweep_count" jdbcType="INTEGER" property="sweepCount" />
-    <result column="dedust_count" jdbcType="INTEGER" property="dedustCount" />
-    <result column="purling_direction" jdbcType="INTEGER" property="purlingDirection" />
-    <result column="sweep_direction" jdbcType="INTEGER" property="sweepDirection" />
-    <result column="dedust_direction" jdbcType="INTEGER" property="dedustDirection" />
-    <result column="line_length" jdbcType="DECIMAL" property="lineLength" />
-    <result column="line_width" jdbcType="DECIMAL" property="lineWidth" />
-    <result column="line_area" jdbcType="DECIMAL" property="lineArea" />
-    <result column="location_info" jdbcType="VARCHAR" property="locationInfo" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
-    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from iov_fence_line
-    where line_id = #{lineId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.iben.sanitation.domain.IovFenceLinePO">
-    insert into iov_fence_line (line_id, fence_id, line_name,
-      road_label_id, clean_level, start_point_name,
-      end_point_name, community_code, line_options,
-      purling_count, sweep_count, dedust_count,
-      purling_direction, sweep_direction, dedust_direction,
-      line_length, line_width, line_area,
-      location_info, create_time, modify_time,
-      delete_status)
-    values (#{lineId,jdbcType=BIGINT}, #{fenceId,jdbcType=BIGINT}, #{lineName,jdbcType=VARCHAR},
-      #{roadLabelId,jdbcType=BIGINT}, #{cleanLevel,jdbcType=INTEGER}, #{startPointName,jdbcType=VARCHAR},
-      #{endPointName,jdbcType=VARCHAR}, #{communityCode,jdbcType=BIGINT}, #{lineOptions,jdbcType=INTEGER},
-      #{purlingCount,jdbcType=INTEGER}, #{sweepCount,jdbcType=INTEGER}, #{dedustCount,jdbcType=INTEGER},
-      #{purlingDirection,jdbcType=INTEGER}, #{sweepDirection,jdbcType=INTEGER}, #{dedustDirection,jdbcType=INTEGER},
-      #{lineLength,jdbcType=DECIMAL}, #{lineWidth,jdbcType=DECIMAL}, #{lineArea,jdbcType=DECIMAL},
-      #{locationInfo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
-      #{deleteStatus,jdbcType=BIT})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.iben.sanitation.domain.IovFenceLinePO">
-    update iov_fence_line
-    set fence_id = #{fenceId,jdbcType=BIGINT},
-      line_name = #{lineName,jdbcType=VARCHAR},
-      road_label_id = #{roadLabelId,jdbcType=BIGINT},
-      clean_level = #{cleanLevel,jdbcType=INTEGER},
-      start_point_name = #{startPointName,jdbcType=VARCHAR},
-      end_point_name = #{endPointName,jdbcType=VARCHAR},
-      community_code = #{communityCode,jdbcType=BIGINT},
-      line_options = #{lineOptions,jdbcType=INTEGER},
-      purling_count = #{purlingCount,jdbcType=INTEGER},
-      sweep_count = #{sweepCount,jdbcType=INTEGER},
-      dedust_count = #{dedustCount,jdbcType=INTEGER},
-      purling_direction = #{purlingDirection,jdbcType=INTEGER},
-      sweep_direction = #{sweepDirection,jdbcType=INTEGER},
-      dedust_direction = #{dedustDirection,jdbcType=INTEGER},
-      line_length = #{lineLength,jdbcType=DECIMAL},
-      line_width = #{lineWidth,jdbcType=DECIMAL},
-      line_area = #{lineArea,jdbcType=DECIMAL},
-      location_info = #{locationInfo,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      delete_status = #{deleteStatus,jdbcType=BIT}
-    where line_id = #{lineId,jdbcType=BIGINT}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select line_id, fence_id, line_name, road_label_id, clean_level, start_point_name,
-    end_point_name, community_code, line_options, purling_count, sweep_count, dedust_count,
-    purling_direction, sweep_direction, dedust_direction, line_length, line_width, line_area,
-    location_info, create_time, modify_time, delete_status
-    from iov_fence_line
-    where line_id = #{lineId,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select line_id, fence_id, line_name, road_label_id, clean_level, start_point_name,
-    end_point_name, community_code, line_options, purling_count, sweep_count, dedust_count,
-    purling_direction, sweep_direction, dedust_direction, line_length, line_width, line_area,
-    location_info, create_time, modify_time, delete_status
-    from iov_fence_line
-  </select>
+<!--  <resultMap id="BaseFenceLineResultMap" type="com.iben.sanitation.domain.IovFenceLinePO">-->
+<!--    <id column="line_id" jdbcType="BIGINT" property="lineId" />-->
+<!--    <result column="fence_id" jdbcType="BIGINT" property="fenceId" />-->
+<!--    <result column="line_name" jdbcType="VARCHAR" property="lineName" />-->
+<!--    <result column="road_label_id" jdbcType="BIGINT" property="roadLabelId" />-->
+<!--    <result column="clean_level" jdbcType="INTEGER" property="cleanLevel" />-->
+<!--    <result column="start_point_name" jdbcType="VARCHAR" property="startPointName" />-->
+<!--    <result column="end_point_name" jdbcType="VARCHAR" property="endPointName" />-->
+<!--    <result column="community_code" jdbcType="BIGINT" property="communityCode" />-->
+<!--    <result column="line_options" jdbcType="INTEGER" property="lineOptions" />-->
+<!--    <result column="purling_count" jdbcType="INTEGER" property="purlingCount" />-->
+<!--    <result column="sweep_count" jdbcType="INTEGER" property="sweepCount" />-->
+<!--    <result column="dedust_count" jdbcType="INTEGER" property="dedustCount" />-->
+<!--    <result column="purling_direction" jdbcType="INTEGER" property="purlingDirection" />-->
+<!--    <result column="sweep_direction" jdbcType="INTEGER" property="sweepDirection" />-->
+<!--    <result column="dedust_direction" jdbcType="INTEGER" property="dedustDirection" />-->
+<!--    <result column="line_length" jdbcType="DECIMAL" property="lineLength" />-->
+<!--    <result column="line_width" jdbcType="DECIMAL" property="lineWidth" />-->
+<!--    <result column="line_area" jdbcType="DECIMAL" property="lineArea" />-->
+<!--    <result column="location_info" jdbcType="VARCHAR" property="locationInfo" />-->
+<!--    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />-->
+<!--    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />-->
+<!--    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />-->
+<!--  </resultMap>-->
+
+
+
+
+
+
 </mapper>

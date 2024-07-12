@@ -26,6 +26,7 @@ public class RoadLabelService extends ServiceImpl<IovRoadLabelMapper, IovRoadLab
     private IovRoadLabelMapper iovRoadLabelMapper;
 
 
+    @Override
     public List<IovRoadLabelPO> queryRoadLabelListByForm(RoadLabelQueryForm queryForm) {
 
         List<IovRoadLabelPO> resultList = new ArrayList<>();

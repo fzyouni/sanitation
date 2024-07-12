@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iben.sanitation.mapper.IovRoadLabelMapper">
+  <resultMap id="BaseRoadLabelResultMap" type="com.iben.sanitation.domain.IovRoadLabelPO">
+    <id column="road_label_id" jdbcType="BIGINT" property="roadLabelId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="road_label_name" jdbcType="VARCHAR" property="roadLabelName" />
+    <result column="label_deep" jdbcType="INTEGER" property="labelDeep" />
+    <result column="label_sort" jdbcType="INTEGER" property="labelSort" />
+    <result column="start_point_name" jdbcType="VARCHAR" property="startPointName" />
+    <result column="end_point_name" jdbcType="VARCHAR" property="endPointName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="community_code" jdbcType="BIGINT" property="communityCode" />
+    <result column="clean_level" jdbcType="INTEGER" property="cleanLevel" />
+    <result column="line_options" jdbcType="INTEGER" property="lineOptions" />
+    <result column="purling_count" jdbcType="INTEGER" property="purlingCount" />
+    <result column="sweep_count" jdbcType="INTEGER" property="sweepCount" />
+    <result column="dedust_count" jdbcType="INTEGER" property="dedustCount" />
+    <result column="purling_direction" jdbcType="INTEGER" property="purlingDirection" />
+    <result column="sweep_direction" jdbcType="INTEGER" property="sweepDirection" />
+    <result column="dedust_direction" jdbcType="INTEGER" property="dedustDirection" />
+    <result column="road_length" jdbcType="DECIMAL" property="roadLength" />
+    <result column="road_width" jdbcType="DECIMAL" property="roadWidth" />
+    <result column="road_area" jdbcType="DECIMAL" property="roadArea" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+
+</mapper>

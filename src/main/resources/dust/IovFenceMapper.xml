@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iben.sanitation.mapper.IovFenceMapper">
+  <resultMap id="BaseFenceResultMap" type="com.iben.sanitation.domain.IovFencePO">
+    <id column="fence_id" jdbcType="BIGINT" property="fenceId" />
+    <result column="fence_name" jdbcType="VARCHAR" property="fenceName" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="fence_type" jdbcType="INTEGER" property="fenceType" />
+    <result column="length" jdbcType="DECIMAL" property="length" />
+    <result column="radius" jdbcType="DECIMAL" property="radius" />
+    <result column="area" jdbcType="DECIMAL" property="area" />
+    <result column="coordinate_type" jdbcType="INTEGER" property="coordinateType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+
+</mapper>

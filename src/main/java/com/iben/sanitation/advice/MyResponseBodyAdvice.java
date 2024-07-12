@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @author Ben <fzyouni@163.com>
  * @create 2020-09-10 13:55
  **/
-@ControllerAdvice(basePackages = "com.iben.sanitation.controller")
+//@ControllerAdvice(basePackages = "com.iben.sanitation.controller")
 public class MyResponseBodyAdvice implements ResponseBodyAdvice {
 
     /**
@@ -36,4 +36,8 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
             return ResponseModel.success(o);
         }
     }
+
+
+
+
 }

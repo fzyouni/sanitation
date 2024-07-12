@@ -30,8 +30,8 @@ public abstract class BaseModel implements ILogicDeleteBaseModel, ITimeBaseModel
 
     @TableLogic
     @TableField(fill = FieldFill.INSERT)
-    @Schema(description = "删除状态 (0->未删除；1->已删除)")
-    private Boolean deleteStatus;
+    @Schema(description = "删除状态 (0->未删除；1->已删除)",hidden = true)
+    private Short deleteStatus;
 
 
     @Override
@@ -55,12 +55,12 @@ public abstract class BaseModel implements ILogicDeleteBaseModel, ITimeBaseModel
     }
 
     @Override
-    public Boolean getDeleteStatus() {
+    public Short getDeleteStatus() {
         return deleteStatus;
     }
 
     @Override
-    public void setDeleteStatus(Boolean deleteStatus) {
+    public void setDeleteStatus(Short deleteStatus) {
         this.deleteStatus = deleteStatus;
     }
 

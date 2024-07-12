@@ -7,13 +7,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iben.sanitation.domain.IovFenceLinePO;
 import com.iben.sanitation.domain.IovFencePO;
 import com.iben.sanitation.domain.IovFencePointPO;
-import com.iben.sanitation.dto.IovFenceAddDTO;
+import com.iben.sanitation.dto.IovFenceDTO;
 import com.iben.sanitation.mapper.IovFenceLineMapper;
 import com.iben.sanitation.mapper.IovFenceMapper;
 import com.iben.sanitation.mapper.IovFencePointMapper;
 import com.iben.sanitation.services.IFenceService;
 import com.iben.sanitation.vo.IovFencePointVO;
-import com.iben.sanitation.vo.IovFenceVO;
+import com.iben.sanitation.vo.IovFenceLineVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +49,7 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePO> implem
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public IovFenceVO addFence(IovFenceAddDTO fenceAddDTO) throws Exception {
+    public IovFenceLineVO addFence(IovFenceDTO fenceAddDTO){
         //TODO
         //check param
 
@@ -61,9 +61,10 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePO> implem
 
         int insertResult = iovFenceMapper.insert(fencePo);
 
+        IovFenceLineVO fenceVO = new IovFenceLineVO();
 
         if (insertResult <= 0) {
-            throw new Exception("addFence error,please check param of " + fenceAddDTO.toString());
+            return fenceVO;
         }
 
         Long fenceId = fencePo.getFenceId();
@@ -76,7 +77,7 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePO> implem
 
         iovFencePointMapper.batchInsertPoints(pointList, fenceId, customerId, coordinateType);
 
-        IovFenceVO fenceVO = new IovFenceVO();
+
         BeanUtils.copyProperties(fencePo, fenceVO);
 
         List<IovFencePointVO> pointVOList = pointList.stream().map(item -> {

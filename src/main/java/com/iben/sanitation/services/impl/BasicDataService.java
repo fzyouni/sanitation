@@ -2,10 +2,13 @@ package com.iben.sanitation.services.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iben.sanitation.domain.IovAdministrativeDivisionPO;
 import com.iben.sanitation.domain.IovDataDictionaryPO;
+import com.iben.sanitation.domain.IovFencePO;
 import com.iben.sanitation.mapper.IovAdministrativeDivisionMapper;
 import com.iben.sanitation.mapper.IovDataDictionaryMapper;
+import com.iben.sanitation.mapper.IovFenceMapper;
 import com.iben.sanitation.queryForm.AdDivisionQueryForm;
 import com.iben.sanitation.queryForm.DictionaryDataQueryForm;
 import com.iben.sanitation.services.IBasicDataService;
@@ -19,20 +22,18 @@ import java.util.Objects;
 
 /**
  * 基础数据服务
+ *
  * @author qquan
  * @date 2024-07-11 23:43
  */
 @Service("basicDataService")
-public class BasicDataService implements IBasicDataService {
-
+public class BasicDataService  extends ServiceImpl<IovFenceMapper, IovFencePO> implements IBasicDataService {
 
     @Resource
     private IovDataDictionaryMapper iovDataDictionaryMapper;
 
     @Resource
     private IovAdministrativeDivisionMapper iovAdministrativeDivisionMapper;
-
-
 
 
     @Override
@@ -66,7 +67,7 @@ public class BasicDataService implements IBasicDataService {
         query.eq(!dictCodeEmpty, IovDataDictionaryPO::getDictCode, dictCode);
         query.like(!dictNameEmpty, IovDataDictionaryPO::getDictName, dictName);
 
-        query.orderBy(true,true,IovDataDictionaryPO::getDictSort);
+        query.orderBy(true, true, IovDataDictionaryPO::getDictSort);
 
         resultList = iovDataDictionaryMapper.selectList(query);
 
@@ -96,7 +97,7 @@ public class BasicDataService implements IBasicDataService {
         boolean nameEmpty = StringUtils.isEmpty(name);
         boolean localNameEmpty = StringUtils.isEmpty(localName);
 
-        if (adIdIsNull && pidIsNull && deepIsNull && nameEmpty&& localNameEmpty) {
+        if (adIdIsNull && pidIsNull && deepIsNull && nameEmpty && localNameEmpty) {
             //不传参数时 返回空数据;
             return resultList;
         }
@@ -109,14 +110,12 @@ public class BasicDataService implements IBasicDataService {
         query.like(!nameEmpty, IovAdministrativeDivisionPO::getName, name);
         query.like(!localNameEmpty, IovAdministrativeDivisionPO::getLocalName, localName);
 
-        query.orderBy(true,true,IovAdministrativeDivisionPO::getExtId);
+        query.orderBy(true, true, IovAdministrativeDivisionPO::getExtId);
 
         resultList = iovAdministrativeDivisionMapper.selectList(query);
 
         return resultList;
     }
-
-
 
 
 }

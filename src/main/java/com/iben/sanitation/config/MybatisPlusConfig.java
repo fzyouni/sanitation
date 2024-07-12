@@ -1,14 +1,20 @@
 package com.iben.sanitation.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.apache.ibatis.reflection.MetaObject;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import java.util.Date;
 
 /**
  * Mybatis Plus 配置
@@ -56,4 +62,23 @@ public class MybatisPlusConfig {
     public BlockAttackInnerInterceptor blockAttackInnerInterceptor() {
         return new BlockAttackInnerInterceptor();
     }
+
+
+    private short  deleteStatus;
+    @Component
+    public class CommonFieldHandler implements MetaObjectHandler {
+
+        @Override
+        public void insertFill(MetaObject metaObject) {
+            this.strictInsertFill(metaObject, "createTime",  Date.class, new Date());
+            this.strictInsertFill(metaObject, "modifyTime",  Date.class, new Date());
+            this.strictInsertFill(metaObject, "deleteStatus", Short.class, deleteStatus);
+        }
+
+        @Override
+        public void updateFill(MetaObject metaObject) {
+            this.strictUpdateFill(metaObject, "modifyTime", Date.class, new Date());
+        }
+    }
+
 }

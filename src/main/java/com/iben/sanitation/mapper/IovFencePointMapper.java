@@ -8,11 +8,6 @@ import java.util.Collection;
 import java.util.List;
 
 public interface IovFencePointMapper extends BaseMapper<IovFencePointPO> {
-    int deleteByPrimaryKey(Long fencePointId);
-    IovFencePointPO selectByPrimaryKey(Long fencePointId);
-    List<IovFencePointPO> selectAll();
-    int updateByPrimaryKey(IovFencePointPO row);
-
 
     /**
      * 批量插入 BdmFencePoint

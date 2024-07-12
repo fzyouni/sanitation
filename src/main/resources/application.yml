@@ -20,24 +20,26 @@ sanitation-info:
 #mybatis-plus
 mybatis-plus:
   # 搜索指定包别名
-  typeAliasesPackage: com.iben.sanitation.domain
+  type-aliases-package: com.iben.**.domain.**PO
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
-  mapperLocations: classpath*:mappers/*Mapper.xml
+  mapper-locations: classpath*:/mappers/**Mapper.xml
   configuration:
     #开启实体驼峰命名
     map-underscore-to-camel-case: true
+    cache-enabled: false # 关闭全局缓存
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
   global-config:
     #主键类型
     db-config:
       id-type: AUTO
+      logic-delete-field: delete_status
       #逻辑删除配置（下面2个配置）
-      logic-delete-value: true
-      logic-not-delete-value: false
+      logic-delete-value: 1
+      logic-not-delete-value: 0
       field-strategy: NOT_NULL
       db-type: MYSQL
-      logic-delete-field: delete_status
+
 
 
 

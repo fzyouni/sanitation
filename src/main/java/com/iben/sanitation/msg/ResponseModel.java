@@ -82,6 +82,15 @@ public class ResponseModel<T> implements Serializable {
         return new ResponseModel<>(type);
     }
 
+    /**
+     * 返回封装参数检验失败 的方法
+     *
+     * @return 返回统一封装数据对象
+     */
+    public static <T> ResponseModel<T> errorParam(String errorMessage) {
+        return error(ReturnCodeType.PARAMETER_VALIDATE_ERROR,errorMessage);
+    }
+
 
     /**
      * 错误时返回封装错误码对象方法

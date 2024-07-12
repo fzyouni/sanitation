@@ -1,30 +1,26 @@
 package com.iben.sanitation.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.iben.sanitation.domain.IovAdministrativeDivisionPO;
 import com.iben.sanitation.domain.IovFencePO;
 import com.iben.sanitation.domain.IovRoadLabelPO;
-import com.iben.sanitation.dto.IovFenceAddDTO;
+import com.iben.sanitation.dto.IovFenceDTO;
+import com.iben.sanitation.enums.ReturnCodeType;
+import com.iben.sanitation.exception.BusinessException;
 import com.iben.sanitation.msg.ResponseModel;
-import com.iben.sanitation.queryForm.AdDivisionQueryForm;
 import com.iben.sanitation.queryForm.RoadLabelQueryForm;
-import com.iben.sanitation.services.impl.FenceService;
-import com.iben.sanitation.services.impl.RoadLabelService;
-import com.iben.sanitation.vo.IovFenceVO;
+import com.iben.sanitation.services.IFenceService;
+import com.iben.sanitation.services.IRoadLabelService;
+import com.iben.sanitation.vo.IovFenceLineVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.SneakyThrows;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -42,15 +38,15 @@ import java.util.List;
 public class FenceController {
 
     @Resource
-    private FenceService fenceService;
+    private IFenceService fenceService;
 
     @Resource
-    private RoadLabelService roadLabelService;
+    private IRoadLabelService roadLabelService;
 
     @Operation(summary = "添加围栏")
     @PostMapping
-    public ResponseModel<IovFenceVO> addFence(@RequestBody IovFenceAddDTO fenceAddDto) throws Exception {
-        IovFenceVO fenceVO = fenceService.addFence(fenceAddDto);
+    public ResponseModel<IovFenceLineVO> addFence(@RequestBody @Valid IovFenceDTO fenceAddDto){
+        IovFenceLineVO fenceVO = fenceService.addFence(fenceAddDto);
 
         return ResponseModel.success(fenceVO);
     }
@@ -67,9 +63,10 @@ public class FenceController {
         return fenceService.getIovFenceList(currentPage, pageSize);
     }
 
+    @Operation(summary = "获取围栏详情")
     @GetMapping("{fenceId}")
-    public void detailFence(@PathVariable Integer fenceId) {
-
+    public void detailFence(@PathVariable Integer fenceId) throws BusinessException {
+        throw new BusinessException(ReturnCodeType.PARAMETER_VALIDATE_ERROR,"这是我的自定义异常");
     }
 
     @DeleteMapping("{fenceId}")
@@ -79,9 +76,9 @@ public class FenceController {
 
 
 
-    @Operation(summary = "行政区划查询")
-    @PostMapping(value = "/queryAdDivision")
-    public ResponseModel<List<IovRoadLabelPO>> queryAdDivision(@RequestBody RoadLabelQueryForm queryForm) {
+    @Operation(summary = "查询道路标签信息")
+    @PostMapping(value = "/queryRoadLabel")
+    public ResponseModel<List<IovRoadLabelPO>> queryRoadLabel(@RequestBody RoadLabelQueryForm queryForm) {
         List<IovRoadLabelPO> poList = roadLabelService.queryRoadLabelListByForm(queryForm);
 
         return ResponseModel.success(poList);

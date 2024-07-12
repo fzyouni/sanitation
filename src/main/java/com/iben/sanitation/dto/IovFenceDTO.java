@@ -7,18 +7,28 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class IovFenceAddDTO implements Serializable {
+public class IovFenceDTO implements Serializable {
+
+    public interface ValidationGroup {
+        interface Create extends Default {}
+        interface Update extends Default {}
+    }
+
 
 
     @Getter
+    @Schema(description = "围栏实体类",hidden = true)
     private IovFencePO fencePO;
 
     @Getter
+    @Schema(description = "围栏线路业务实体类",hidden = true)
     private IovFenceLinePO linePO;
 
 
@@ -33,13 +43,14 @@ public class IovFenceAddDTO implements Serializable {
 //        this.pointList = pointList;
 //    }
 
-    public IovFenceAddDTO() {
+    public IovFenceDTO() {
         this.fencePO = new IovFencePO();
         this.linePO = new IovFenceLinePO();
         this.pointList = new ArrayList<IovFencePointPO>();
     }
 
 
+    @NotNull(message = "客户/部门id 不能为空")
     @Schema(description = "部门id（客户）")
     private Integer customerId;
 
@@ -63,31 +74,38 @@ public class IovFenceAddDTO implements Serializable {
 
 
     public void setCustomerId(Integer customerId) {
+        this.customerId=customerId;
         fencePO.setCustomerId(customerId);
     }
 
 
     public void setFenceName(String fenceName) {
+        this.fenceName=fenceName;
         fencePO.setFenceName(fenceName);
     }
 
     public void setFenceType(Integer fenceType) {
+        this.fenceType=fenceType;
         fencePO.setFenceType(fenceType);
     }
 
     public void setLength(Double length) {
+        this.length=length;
         fencePO.setLength(length);
     }
 
     public void setRadius(Double radius) {
+        this.radius=radius;
         fencePO.setRadius(radius);
     }
 
     public void setArea(Double area) {
+        this.area=area;
         fencePO.setArea(area);
     }
 
     public void setCoordinateType(Integer coordinateType) {
+        this.coordinateType=coordinateType;
         fencePO.setCoordinateType(coordinateType);
     }
 
@@ -116,7 +134,7 @@ public class IovFenceAddDTO implements Serializable {
     private Long communityCode;
 
     @Schema(description = "路线选项(bit 1 是否开启清扫 b1,bit 2 是否开启洒水 b10,bit 3 是否开启抑尘 b100,bit 4 是否有隔离带 b1000)")
-    private LineOptions lineOptions;
+    private LineOptions lineOptionsOb;
 
     @Schema(description = "洒水趟数 整数 1")
     private Integer purlingCount;
@@ -150,82 +168,100 @@ public class IovFenceAddDTO implements Serializable {
 
 
     public void setFenceId(Long fenceId) {
+        this.fenceId=fenceId;
         linePO.setFenceId(fenceId);
     }
 
     public void setLineName(String lineName) {
+        this.lineName=lineName;
         linePO.setLineName(lineName);
     }
 
     public void setRoadLabelId(Long roadLabelId) {
+        this.roadLabelId=roadLabelId;
         linePO.setRoadLabelId(roadLabelId);
     }
 
     public void setCleanLevel(Integer cleanLevel) {
+        this.cleanLevel=cleanLevel;
         linePO.setCleanLevel(cleanLevel);
     }
 
     public void setStartPointName(String startPointName) {
+
+        this.startPointName=startPointName;
         linePO.setStartPointName(startPointName);
     }
 
     public void setEndPointName(String endPointName) {
+        this.endPointName=endPointName;
         linePO.setEndPointName(endPointName);
     }
 
     public void setCommunityCode(Long communityCode) {
+        this.communityCode=communityCode;
         linePO.setCommunityCode(communityCode);
     }
 
     public void setPurlingCount(Integer purlingCount) {
+        this.purlingCount=purlingCount;
         linePO.setPurlingCount(purlingCount);
     }
 
     public void setSweepCount(Integer sweepCount) {
+        this.sweepCount=sweepCount;
         linePO.setSweepCount(sweepCount);
     }
 
     public void setDedustCount(Integer dedustCount) {
+        this.dedustCount=dedustCount;
         linePO.setDedustCount(dedustCount);
     }
 
     public void setPurlingDirection(Integer purlingDirection) {
+        this.purlingDirection=purlingDirection;
         linePO.setPurlingDirection(purlingDirection);
     }
 
     public void setSweepDirection(Integer sweepDirection) {
+        this.sweepDirection=sweepDirection;
         linePO.setSweepDirection(sweepDirection);
     }
 
     public void setDedustDirection(Integer dedustDirection) {
+        this.dedustDirection=dedustDirection;
         linePO.setDedustDirection(dedustDirection);
     }
 
     public void setLineLength(Double lineLength) {
+        this.lineLength=lineLength;
         linePO.setLineLength(lineLength);
     }
 
     public void setLineWidth(Double lineWidth) {
+        this.lineWidth=lineWidth;
         linePO.setLineWidth(lineWidth);
     }
 
     public void setLineArea(Double lineArea) {
+        this.lineArea=lineArea;
         linePO.setLineArea(lineArea);
     }
 
     public void setLocationInfo(String locationInfo) {
+        this.locationInfo=locationInfo;
         linePO.setLocationInfo(locationInfo);
     }
 
-    public LineOptions getLineOptions() {
-        return lineOptions;
+    public LineOptions getLineOptionsOb() {
+        return lineOptionsOb;
     }
 
-    public void setLineOptions(LineOptions lineOptions) {
-        this.lineOptions = lineOptions;
+    public void setLineOptionsOb(LineOptions lineOptionsOb) {
+        this.lineOptionsOb = lineOptionsOb;
 
-        if(Objects.nonNull(lineOptions)){
-            linePO.setLineOptions(lineOptions.convertToInt());
+        if(Objects.nonNull(lineOptionsOb)){
+            linePO.setLineOptions(lineOptionsOb.convertToInt());
         }
 
     }

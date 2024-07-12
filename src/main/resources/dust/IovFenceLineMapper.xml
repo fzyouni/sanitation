@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iben.sanitation.mapper.IovFenceLineMapper">
+  <resultMap id="BaseFenceLineResultMap" type="com.iben.sanitation.domain.IovFenceLinePO">
+    <id column="line_id" jdbcType="BIGINT" property="lineId" />
+    <result column="fence_id" jdbcType="BIGINT" property="fenceId" />
+    <result column="line_name" jdbcType="VARCHAR" property="lineName" />
+    <result column="road_label_id" jdbcType="BIGINT" property="roadLabelId" />
+    <result column="clean_level" jdbcType="INTEGER" property="cleanLevel" />
+    <result column="start_point_name" jdbcType="VARCHAR" property="startPointName" />
+    <result column="end_point_name" jdbcType="VARCHAR" property="endPointName" />
+    <result column="community_code" jdbcType="BIGINT" property="communityCode" />
+    <result column="line_options" jdbcType="INTEGER" property="lineOptions" />
+    <result column="purling_count" jdbcType="INTEGER" property="purlingCount" />
+    <result column="sweep_count" jdbcType="INTEGER" property="sweepCount" />
+    <result column="dedust_count" jdbcType="INTEGER" property="dedustCount" />
+    <result column="purling_direction" jdbcType="INTEGER" property="purlingDirection" />
+    <result column="sweep_direction" jdbcType="INTEGER" property="sweepDirection" />
+    <result column="dedust_direction" jdbcType="INTEGER" property="dedustDirection" />
+    <result column="line_length" jdbcType="DECIMAL" property="lineLength" />
+    <result column="line_width" jdbcType="DECIMAL" property="lineWidth" />
+    <result column="line_area" jdbcType="DECIMAL" property="lineArea" />
+    <result column="location_info" jdbcType="VARCHAR" property="locationInfo" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+  </resultMap>
+
+</mapper>

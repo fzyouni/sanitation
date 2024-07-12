@@ -5,10 +5,13 @@ import com.iben.sanitation.domain.IovDataDictionaryPO;
 import com.iben.sanitation.msg.ResponseModel;
 import com.iben.sanitation.queryForm.AdDivisionQueryForm;
 import com.iben.sanitation.queryForm.DictionaryDataQueryForm;
-import com.iben.sanitation.services.impl.BasicDataService;
+import com.iben.sanitation.services.IBasicDataService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,7 +27,7 @@ import java.util.List;
 public class BasicDataController {
 
     @Resource
-    private BasicDataService basicDataService;
+    private IBasicDataService basicDataService;
 
     @Operation(summary = "字典数据查询")
     @PostMapping(value = "/queryDictionary")
