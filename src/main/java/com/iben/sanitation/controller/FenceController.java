@@ -11,6 +11,7 @@ import com.iben.sanitation.queryForm.RoadLabelQueryForm;
 import com.iben.sanitation.services.IFenceService;
 import com.iben.sanitation.services.IRoadLabelService;
 import com.iben.sanitation.vo.IovFenceLineVO;
+import com.iben.sanitation.vo.IovFenceVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -51,18 +52,6 @@ public class FenceController {
         return ResponseModel.success(fenceVO);
     }
 
-    @Operation(summary = "获取围栏信息列表")
-    @Parameters({
-            @Parameter(name = "currentPage", description = "页码", in = ParameterIn.PATH),
-            @Parameter(name = "pageSize", description = "页容量", required = true, in = ParameterIn.PATH)
-    })
-    @GetMapping
-    public IPage<IovFencePO> listFence(
-            @Min(value = 1, message = "最小页数为1") @NotNull(message = "当前页不可为空") Integer currentPage,
-            @NotNull(message = "页容量不可为空！") @Min(value = 1, message = "最小页容量需大于或等于1！") Integer pageSize) {
-        return fenceService.getIovFenceList(currentPage, pageSize);
-    }
-
     @Operation(summary = "获取围栏详情")
     @GetMapping("{fenceId}")
     public void detailFence(@PathVariable Integer fenceId) throws BusinessException {
@@ -83,5 +72,19 @@ public class FenceController {
 
         return ResponseModel.success(poList);
     }
+
+//    /**
+//     * 在表中管理线路业务相关的属性
+//     * @param currentPage
+//     * @param pageSize
+//     * @return
+//     */
+//    @Operation(summary = "获取线路列表")
+//    @GetMapping
+//    public IPage<IovFenceVo> listFence(
+//            @Min(value = 1, message = "最小页数为1") @NotNull(message = "当前页不可为空") Integer currentPage,
+//            @NotNull(message = "页容量不可为空！") @Min(value = 1, message = "最小页容量需大于或等于1！") Integer pageSize) {
+//        return fenceService.getIovFenceList(currentPage, pageSize);
+//    }
 
 }

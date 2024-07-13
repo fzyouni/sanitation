@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.iben.sanitation.domain.base.extend.CustomerBaseModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import javax.validation.Valid;
+
 /**
  * 围栏点位表(iov_fence_point)表实体类
  *

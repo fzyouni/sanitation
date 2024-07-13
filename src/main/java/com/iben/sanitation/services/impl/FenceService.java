@@ -6,22 +6,21 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iben.sanitation.domain.IovFenceLinePO;
 import com.iben.sanitation.domain.IovFencePO;
-import com.iben.sanitation.domain.IovFencePointPO;
 import com.iben.sanitation.dto.IovFenceDTO;
+import com.iben.sanitation.dto.IovFencePointDTO;
 import com.iben.sanitation.mapper.IovFenceLineMapper;
 import com.iben.sanitation.mapper.IovFenceMapper;
 import com.iben.sanitation.mapper.IovFencePointMapper;
 import com.iben.sanitation.services.IFenceService;
-import com.iben.sanitation.vo.IovFencePointVO;
 import com.iben.sanitation.vo.IovFenceLineVO;
+import com.iben.sanitation.vo.IovFencePointVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.annotation.Resource;
 
 /**
  * @author fangzhuo
@@ -49,15 +48,14 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePO> implem
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public IovFenceLineVO addFence(IovFenceDTO fenceAddDTO){
-        //TODO
-        //check param
+    public IovFenceLineVO addFence(IovFenceDTO fenceAddDTO) {
 
         IovFencePO fencePo = fenceAddDTO.getFencePO();
 
         IovFenceLinePO linePo = fenceAddDTO.getLinePO();
 
-        List<IovFencePointPO> pointList = fenceAddDTO.getPointList();
+        List<IovFencePointDTO> pointList = fenceAddDTO.getPointList();
+
 
         int insertResult = iovFenceMapper.insert(fencePo);
 
@@ -89,4 +87,6 @@ public class FenceService extends ServiceImpl<IovFenceMapper, IovFencePO> implem
 
         return fenceVO;
     }
+
+
 }

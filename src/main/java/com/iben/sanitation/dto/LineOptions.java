@@ -16,16 +16,16 @@ import java.util.Objects;
 public class LineOptions {
 
 
-    @Schema(description = "是否开启清扫")
+    @Schema(description = "是否开启清扫", example = "false", requiredMode = Schema.RequiredMode.REQUIRED)
     private Boolean enablePurling = false;
 
-    @Schema(description = "是否开启洒水")
+    @Schema(description = "是否开启洒水", example = "false", requiredMode = Schema.RequiredMode.REQUIRED)
     private Boolean enableSweep = false;
 
-    @Schema(description = "是否开启抑尘")
+    @Schema(description = "是否开启抑尘", example = "false", requiredMode = Schema.RequiredMode.REQUIRED)
     private Boolean enableDedust = false;
 
-    @Schema(description = "是否有隔离带")
+    @Schema(description = "是否有隔离带", example = "true", requiredMode = Schema.RequiredMode.REQUIRED)
     private Boolean greenbeltIsolation = false;
 
 

@@ -2,10 +2,10 @@ package com.iben.sanitation.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.iben.sanitation.domain.IovFencePointPO;
+import com.iben.sanitation.dto.IovFencePointDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface IovFencePointMapper extends BaseMapper<IovFencePointPO> {
 
@@ -19,7 +19,7 @@ public interface IovFencePointMapper extends BaseMapper<IovFencePointPO> {
      * @param coordinateType 坐标系类型 not null
      *  BdmFencePoint  lat lng sort > 0
      */
-    void batchInsertPoints(@Param("points") Collection<IovFencePointPO> points,
+    void batchInsertPoints(@Param("points") Collection<IovFencePointDTO> points,
                            @Param("fenceId") Long fenceId,
                            @Param("customerId") Integer customerId,
                            @Param("coordinateType") Integer coordinateType);
